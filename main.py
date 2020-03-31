@@ -87,6 +87,7 @@ class CustomRenderer(object):
                 raise AttributeError('No renderer "{!r}"'.format(name))
             return method
 
+
 def parse_mdfile(input_filename):
     try:
         with open(input_filename, 'r') as input_file:
@@ -112,7 +113,13 @@ if __name__ == "__main__":
         print("python main.py [input_markdown_file]")
         exit()
 
-    md = '\n'.join(filter(lambda x: x.strip(), map(lambda x: x.strip(), md.split('\n'))))
+    # remove empty lines
+    md = '\n'.join(
+        filter(
+            lambda x: x.strip(), map(
+                lambda x: x.strip(), md.split('\n'))))
 
     print(md)
 
+    if len(md) > 4000:
+        print("[WARN] Char count > 4000: beyond the limit of Slack custom response")
