@@ -4,8 +4,11 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+autopep8 = "*"
+flake8 = "*"
 
 [packages]
+mistune = "==2.0.0a2"
 
 [requires]
 python_version = "3.8"
