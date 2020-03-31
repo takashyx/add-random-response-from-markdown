@@ -4,6 +4,16 @@ import sys
 import inspect
 import pprint
 
+target_heading = [
+    'マネージャについて',
+    'キャリア開発',
+    '会話のきっかけ',
+    '働きがい',
+    'その他',
+    'チームと会社',
+    'ワーク・ライフ',
+]
+
 
 class CustomRenderer(object):
 
@@ -44,7 +54,10 @@ class CustomRenderer(object):
         return f"{text}\n"
 
     def heading(self, text, level):
-        return ''
+        if text in target_heading:
+            return '====================\n' + text + '\n====================\n'
+        else:
+            return '----------\n' + text + '\n----------\n'
 
     def newline(self):
         return ''
@@ -104,14 +117,18 @@ def parse_mdfile(input_filename):
 if __name__ == "__main__":
 
     args_count = len(sys.argv)
-    if args_count == 2:
-        print(f"input_file: {sys.argv[1]}")
-        md = parse_mdfile(sys.argv[1])
-    else:
+
+    if args_count == 3:
+        target_heading = sys.argv[2]
+
+    elif args_count != 2:
         print(f"arguments count not match.")
         print("usage:")
         print("python main.py [input_markdown_file]")
         exit()
+
+    print(f"input_file: {sys.argv[1]}, target_heading: {target_heading}")
+    md = parse_mdfile(sys.argv[1])
 
     # remove empty lines
     md = '\n'.join(

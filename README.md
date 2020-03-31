@@ -25,3 +25,6 @@ Use pipenv
 ```bash
 python main.py [input_markdown_file] > [output_text_file]
 ```
+### Options
+
+Edit target_heading in main.py to switch heading highlight
