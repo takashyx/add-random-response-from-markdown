@@ -8,7 +8,7 @@ autopep8 = "*"
 flake8 = "*"
 
 [packages]
-mistune = "==2.0.0a2"
+mistune = "==2.0.3"
 
 [requires]
 python_version = "3.8"
